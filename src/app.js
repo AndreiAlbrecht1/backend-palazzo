@@ -9,6 +9,6 @@ app.get('/', async (req, res) => {
   res.status(200).json({ ok: true });
 });
 
-app.use('/listings', listingsRoutes)
+app.use('/listings', listingsRoutes);
 
 export default app;

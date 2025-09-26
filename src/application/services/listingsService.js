@@ -1,16 +1,33 @@
+import ListingsRepository from '../../domain/repositories/ListingsRepository.js';
 
 export default class ListingsService {
+  static async getAll() {
+    const listings = await ListingsRepository.getAll();
 
-    static async getAll() {
-        // const listings = await ListingsRepository.findAll();
+    if (!listings) {
+      throw new Error('Listings not found.', 400);
+    }
 
-        const listings = 0
+    return listings;
+  }
 
-        if (!listings) {
-            throw new Error('Listings not found.', 400);
-        }
+  static async getById(id) {
+    const listing = await ListingsRepository.getById(id);
 
+    if (!listing) {
+      throw new Error('Listing not found.', 400);
+    }
 
-        return listings;
+    return listing;
+  }
+
+  static async create(listingDTO) {
+    const listing = await ListingsRepository.create(listingDTO);
+
+    if (!listing) {
+      throw new Error('Failed to create listing.', 500);
+    }
+
+    return listing;
   }
 }

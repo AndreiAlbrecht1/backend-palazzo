@@ -103,5 +103,26 @@
       "email": "elena.greco@example.com"
     },
     "url": ""
+  },
+  {
+    "id": 6,
+    "title": "Cobertura Moderna com Vista para o Mar",
+    "price": 1250000,
+    "description": "Cobertura duplex com 3 quartos, sala ampla e varanda panorâmica com vista para o mar.",
+    "location": {
+      "city": "Lisboa",
+      "neighborhood": "Belém",
+      "region": "Lisboa",
+      "country": "Portugal"
+    },
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "square_meters": 180,
+    "owner_contact": {
+      "name": "João Silva",
+      "phone": "+351 912 345 678",
+      "email": "joao.silva@example.com"
+    },
+    "url": "https://exemplo.com/listings/1"
   }
 ]
