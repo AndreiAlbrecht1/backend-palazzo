@@ -1,11 +1,16 @@
 import ListingsRepository from '../../domain/repositories/ListingsRepository.js';
+import { AppError } from '../../shared/errors/AppError.js';
+import {
+  createListingSchema,
+  updateListingSchema,
+} from '../../domain/validators/listingValidator.js';
 
 export default class ListingsService {
   static async getAll() {
     const listings = await ListingsRepository.getAll();
 
-    if (!listings) {
-      throw new Error('Listings not found.', 400);
+    if (listings.length === 0) {
+      throw new AppError('Listings not found.', 404);
     }
 
     return listings;
@@ -15,19 +20,41 @@ export default class ListingsService {
     const listing = await ListingsRepository.getById(id);
 
     if (!listing) {
-      throw new Error('Listing not found.', 400);
+      throw new AppError('Listing not found.', 404);
     }
 
     return listing;
   }
 
   static async create(listingDTO) {
-    const listing = await ListingsRepository.create(listingDTO);
+    const validatedListing = createListingSchema.parse(listingDTO);
+    const listing = await ListingsRepository.create(validatedListing);
+
+    return listing;
+  }
+
+  static async update(listingDTO) {
+    const fieldsToUpdate = Object.fromEntries(
+      Object.entries(listingDTO).filter(([_, value]) => value !== undefined),
+    );
+    const validatedListing = updateListingSchema.parse(fieldsToUpdate);
+
+    const listing = await ListingsRepository.update(validatedListing);
 
     if (!listing) {
-      throw new Error('Failed to create listing.', 500);
+      throw new AppError('Listing not found.', 404);
     }
 
     return listing;
+  }
+
+  static async delete(id) {
+    const success = await ListingsRepository.delete(id);
+
+    if (!success) {
+      throw new AppError('Listing not found.', 404);
+    }
+
+    return;
   }
 }

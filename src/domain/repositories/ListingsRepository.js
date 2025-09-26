@@ -15,7 +15,6 @@ export default class ListingsRepository {
 
   static async getById(id) {
     const data = await this.getAll();
-
     return data.find((p) => p.id === Number(id));
   }
 
@@ -26,5 +25,37 @@ export default class ListingsRepository {
     data.push(listingWithId);
     await writeFile(this.filePath, JSON.stringify(data, null, 2));
     return listingWithId;
+  }
+
+  static async update(listing) {
+    const data = await this.getAll();
+
+    const index = data.findIndex((p) => p.id === listing.id);
+
+    if (index === -1) {
+      return false;
+    }
+
+    const updatedListing = { ...data[index], ...listing };
+    data[index] = updatedListing;
+
+    await writeFile(this.filePath, JSON.stringify(data, null, 2));
+
+    return updatedListing;
+  }
+
+  static async delete(id) {
+    const data = await this.getAll();
+    const index = data.findIndex((p) => p.id === Number(id));
+
+    if (index === -1) {
+      return false;
+    }
+
+    data.splice(index, 1);
+
+    await writeFile(this.filePath, JSON.stringify(data, null, 2));
+
+    return true;
   }
 }
