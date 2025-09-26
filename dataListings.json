@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "title": "Attico Triplex con Vista Mare",
+    "price": 18500000,
+    "description": "Attico triplex con vista panoramica sul mare, piscina privata, area gourmet e finiture in marmo di Carrara.",
+    "location": {
+      "city": "Roma",
+      "neighborhood": "Parioli",
+      "region": "Lazio",
+      "country": "Italy"
+    },
+    "bedrooms": 5,
+    "bathrooms": 7,
+    "square_meters": 1200,
+    "owner_contact": {
+      "name": "Alessandro Rossi",
+      "phone": "+39 335 111 2222",
+      "email": "alessandro.rossi@example.com"
+    },
+    "url": ""
+  },
+  {
+    "id": 2,
+    "title": "Villa Contemporanea in Costa Smeralda",
+    "price": 22000000,
+    "description": "Villa dal design contemporaneo con giardini paesaggistici, sala cinema privata e garage sotterraneo per 6 auto.",
+    "location": {
+      "city": "Olbia",
+      "neighborhood": "Porto Cervo",
+      "region": "Sardegna",
+      "country": "Italy"
+    },
+    "bedrooms": 6,
+    "bathrooms": 8,
+    "square_meters": 1500,
+    "owner_contact": {
+      "name": "Giulia Conti",
+      "phone": "+39 347 222 3333",
+      "email": "giulia.conti@example.com"
+    },
+    "url": ""
+  },
+  {
+    "id": 3,
+    "title": "Appartamento di Lusso con Vista Duomo",
+    "price": 32000000,
+    "description": "Appartamento esclusivo al piano alto con vista diretta sul Duomo di Milano, interni firmati da designer e servizi di concierge 24h.",
+    "location": {
+      "city": "Milano",
+      "neighborhood": "Centro Storico",
+      "region": "Lombardia",
+      "country": "Italy"
+    },
+    "bedrooms": 4,
+    "bathrooms": 5,
+    "square_meters": 900,
+    "owner_contact": {
+      "name": "Marco Bianchi",
+      "phone": "+39 328 444 5555",
+      "email": "marco.bianchi@example.com"
+    },
+    "url": ""
+  },
+  {
+    "id": 4,
+    "title": "Villa Mediterranea con Porto Privato",
+    "price": 45000000,
+    "description": "Villa esclusiva fronte mare con porto privato, eliporto, spa completa e cantina climatizzata.",
+    "location": {
+      "city": "Amalfi",
+      "neighborhood": "Costiera Amalfitana",
+      "region": "Campania",
+      "country": "Italy"
+    },
+    "bedrooms": 7,
+    "bathrooms": 10,
+    "square_meters": 2000,
+    "owner_contact": {
+      "name": "Francesca Romano",
+      "phone": "+39 320 666 7777",
+      "email": "francesca.romano@example.com"
+    },
+    "url": ""
+  },
+  {
+    "id": 5,
+    "title": "Palazzo Storico Restaurato",
+    "price": 60000000,
+    "description": "Palazzo del XIX secolo completamente restaurato, con dettagli originali e dotato di domotica all’avanguardia.",
+    "location": {
+      "city": "Firenze",
+      "neighborhood": "Centro Storico",
+      "region": "Toscana",
+      "country": "Italy"
+    },
+    "bedrooms": 10,
+    "bathrooms": 12,
+    "square_meters": 3500,
+    "owner_contact": {
+      "name": "Elena Greco",
+      "phone": "+39 333 888 9999",
+      "email": "elena.greco@example.com"
+    },
+    "url": ""
+  }
+]
