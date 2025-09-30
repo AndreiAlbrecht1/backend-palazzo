@@ -12,8 +12,8 @@ export const createListingSchema = z.object({
   }),
   bedrooms: z.number().int().nonnegative(),
   bathrooms: z.number().int().nonnegative(),
-  square_meters: z.number().positive(),
-  owner_contact: z.object({
+  squareMeters: z.number().positive(),
+  ownerContact: z.object({
     name: z.string(),
     phone: z.string(),
     email: z.email(),
@@ -36,8 +36,8 @@ export const updateListingSchema = z.object({
     .optional(),
   bedrooms: z.number().int().nonnegative().optional(),
   bathrooms: z.number().int().nonnegative().optional(),
-  square_meters: z.number().positive().optional(),
-  owner_contact: z
+  squareMeters: z.number().positive().optional(),
+  ownerContact: z
     .object({
       name: z.string().optional(),
       phone: z.string().optional(),
