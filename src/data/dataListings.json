@@ -12,8 +12,8 @@
     },
     "bedrooms": 5,
     "bathrooms": 7,
-    "square_meters": 1200,
-    "owner_contact": {
+    "squareMeters": 1200,
+    "ownerContact": {
       "name": "Alessandro Rossi",
       "phone": "+39 335 111 2222",
       "email": "alessandro.rossi@example.com"
@@ -33,8 +33,8 @@
     },
     "bedrooms": 6,
     "bathrooms": 8,
-    "square_meters": 1500,
-    "owner_contact": {
+    "squareMeters": 1500,
+    "ownerContact": {
       "name": "Giulia Conti",
       "phone": "+39 347 222 3333",
       "email": "giulia.conti@example.com"
@@ -54,8 +54,8 @@
     },
     "bedrooms": 4,
     "bathrooms": 5,
-    "square_meters": 900,
-    "owner_contact": {
+    "squareMeters": 900,
+    "ownerContact": {
       "name": "Marco Bianchi",
       "phone": "+39 328 444 5555",
       "email": "marco.bianchi@example.com"
@@ -75,8 +75,8 @@
     },
     "bedrooms": 7,
     "bathrooms": 10,
-    "square_meters": 2000,
-    "owner_contact": {
+    "squareMeters": 2000,
+    "ownerContact": {
       "name": "Francesca Romano",
       "phone": "+39 320 666 7777",
       "email": "francesca.romano@example.com"
@@ -96,8 +96,8 @@
     },
     "bedrooms": 10,
     "bathrooms": 12,
-    "square_meters": 3500,
-    "owner_contact": {
+    "squareMeters": 3500,
+    "ownerContact": {
       "name": "Elena Greco",
       "phone": "+39 333 888 9999",
       "email": "elena.greco@example.com"

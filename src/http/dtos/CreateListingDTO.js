@@ -6,8 +6,8 @@ export class CreateListingDTO {
     location,
     bedrooms,
     bathrooms,
-    square_meters,
-    owner_contact,
+    squareMeters,
+    ownerContact,
     url,
   }) {
     this.title = title;
@@ -16,8 +16,8 @@ export class CreateListingDTO {
     this.location = location;
     this.bedrooms = bedrooms;
     this.bathrooms = bathrooms;
-    this.square_meters = square_meters;
-    this.owner_contact = owner_contact;
+    this.squareMeters = squareMeters;
+    this.ownerContact = ownerContact;
     this.url = url;
   }
 }

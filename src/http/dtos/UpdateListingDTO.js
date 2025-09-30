@@ -7,8 +7,8 @@ export class UpdateListingDTO {
     location,
     bedrooms,
     bathrooms,
-    square_meters,
-    owner_contact,
+    squareMeters,
+    ownerContact,
     url,
   }) {
     this.id = id;
@@ -18,8 +18,8 @@ export class UpdateListingDTO {
     this.location = location ?? undefined;
     this.bedrooms = bedrooms ?? undefined;
     this.bathrooms = bathrooms ?? undefined;
-    this.square_meters = square_meters ?? undefined;
-    this.owner_contact = owner_contact ?? undefined;
+    this.squareMeters = squareMeters ?? undefined;
+    this.ownerContact = ownerContact ?? undefined;
     this.url = url ?? undefined;
   }
 }
