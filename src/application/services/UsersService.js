@@ -39,7 +39,7 @@ export default class UsersService {
     if (validatedUser.password) {
       const isPasswordValid = await checkPasswordHash(
         validatedUser.password,
-        user.passwordHash,
+        user.hashedPassword,
       );
       if (!isPasswordValid) {
         throw new AppError('Password is incorrect.', 400);
@@ -47,8 +47,11 @@ export default class UsersService {
     }
 
     if (validatedUser.newPassword) {
-      validatedUser.password = await hashPassword(validatedUser.newPassword);
+      validatedUser.hashedPassword = await hashPassword(
+        validatedUser.newPassword,
+      );
       delete validatedUser.newPassword;
+      delete validatedUser.password;
     } else {
       delete validatedUser.password;
     }

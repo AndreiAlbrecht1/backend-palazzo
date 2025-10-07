@@ -1,5 +1,6 @@
-export class CreateUserDTO {
-  constructor({ name, email, phone, password }) {
+export class MeDTO {
+  constructor({ id, name, email, phone, password }) {
+    this.id = id;
     this.name = name;
     this.email = email;
     this.phone = phone;

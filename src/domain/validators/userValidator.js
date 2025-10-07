@@ -49,3 +49,14 @@ export const updateUserSchema = z
       path: ['password'],
     },
   );
+
+export const loginSchema = z.object({
+  email: z.email(),
+  password: z
+    .string()
+    .min(8)
+    .max(64)
+    .refine((val) => /[A-Z]/.test(val))
+    .refine((val) => /[0-9]/.test(val))
+    .refine((val) => /[!@#$%^&*(),.?":{}|<>]/.test(val)),
+});
