@@ -15,7 +15,13 @@ export default class UsersRepository {
 
   static async getById(id) {
     const data = await this.getAll();
+
     return data.find((p) => p.id === Number(id));
+  }
+
+  static async findByEmail(email) {
+    const data = await this.getAll();
+    return data.find((p) => p.email === email);
   }
 
   static async create(user) {
@@ -24,7 +30,8 @@ export default class UsersRepository {
     const userWithId = { id, ...user };
     data.push(userWithId);
     await writeFile(this.filePath, JSON.stringify(data, null, 2));
-    return userWithId;
+    const { hashedPassword, ...userWithoutPassword } = userWithId;
+    return userWithoutPassword;
   }
 
   static async update(user) {
