@@ -35,8 +35,15 @@ export default class ListingsController {
     const updateListingData = {
       id: Number(req.params.id),
       ...req.body,
+      price: req.body.price ? Number(req.body.price) : undefined,
+      bedrooms: req.body.bedrooms ? Number(req.body.bedrooms) : undefined,
+      bathrooms: req.body.bathrooms ? Number(req.body.bathrooms) : undefined,
+      squareMeters: req.body.squareMeters
+        ? Number(req.body.squareMeters)
+        : undefined,
       newImages: req.files?.map((f) => `/${f.filename}`) || [],
     };
+
     const updateListingDTO = new UpdateListingDTO(updateListingData);
     const data = await ListingsService.update(updateListingDTO);
 
