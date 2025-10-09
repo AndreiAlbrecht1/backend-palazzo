@@ -30,7 +30,7 @@ Você pode testar todos os endpoints diretamente no Postman através do workspac
 1. Clone o repositório:
 
 ```bash
-git clone <https://github.com/AndreiAlbrecht1/backend-palazzo.git>
+git clone https://github.com/AndreiAlbrecht1/backend-palazzo.git
 cd backend-palazzo
 ```
 
@@ -94,11 +94,11 @@ src/
 ├─ http/
 │  ├─ controllers/    # Controllers para rotas
 │  ├─ dtos/           # DTOs para criação/atualização de dados
-│  ├─ middlewares/    # Middlewares (auth, error handler)
+│  ├─ middlewares/    # Middlewares (auth, error handler, multer)
 │  └─ routes/         # Definição de rotas
 ├─ shared/
 │  ├─ errors/         # Classes de erro
-│  └─ utils/          # JWT, Multer e hash
+│  └─ utils/          # JWT e hash
 ├─ app.js             # Configuração do Express
 └─ server.js          # Inicialização do servidor
 ```
