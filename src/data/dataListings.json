@@ -1,107 +1,239 @@
 [
   {
     "id": 1,
-    "title": "Attico Triplex con Vista Mare",
-    "price": 18500000,
-    "description": "Attico triplex con vista panoramica sul mare, piscina privata, area gourmet e finiture in marmo di Carrara.",
+    "title": "Penthouse Exclusiva com Vista Panorâmica para o Mar",
+    "price": 8200000,
+    "description": "Cobertura triplex de alto padrão, com piscina privativa, jacuzzi e área gourmet integrada ao terraço. Vista deslumbrante para o Atlântico.",
     "location": {
-      "city": "Roma",
-      "neighborhood": "Parioli",
-      "region": "Lazio",
-      "country": "Italy"
-    },
-    "bedrooms": 5,
-    "bathrooms": 7,
-    "squareMeters": 1200,
-    "ownerContact": {
-      "name": "Alessandro Rossi",
-      "phone": "+39 335 111 2222",
-      "email": "alessandro.rossi@example.com"
-    },
-    "url": ""
-  },
-  {
-    "id": 2,
-    "title": "Villa Contemporanea in Costa Smeralda",
-    "price": 22000000,
-    "description": "Villa dal design contemporaneo con giardini paesaggistici, sala cinema privata e garage sotterraneo per 6 auto.",
-    "location": {
-      "city": "Olbia",
-      "neighborhood": "Porto Cervo",
-      "region": "Sardegna",
-      "country": "Italy"
-    },
-    "bedrooms": 6,
-    "bathrooms": 8,
-    "squareMeters": 1500,
-    "ownerContact": {
-      "name": "Giulia Conti",
-      "phone": "+39 347 222 3333",
-      "email": "giulia.conti@example.com"
-    },
-    "url": ""
-  },
-  {
-    "id": 3,
-    "title": "Appartamento di Lusso con Vista Duomo",
-    "price": 32000000,
-    "description": "Appartamento esclusivo al piano alto con vista diretta sul Duomo di Milano, interni firmati da designer e servizi di concierge 24h.",
-    "location": {
-      "city": "Milano",
-      "neighborhood": "Centro Storico",
-      "region": "Lombardia",
-      "country": "Italy"
+      "city": "Rio de Janeiro",
+      "neighborhood": "Leblon",
+      "region": "RJ",
+      "country": "Brasil"
     },
     "bedrooms": 4,
     "bathrooms": 5,
-    "squareMeters": 900,
-    "ownerContact": {
-      "name": "Marco Bianchi",
-      "phone": "+39 328 444 5555",
-      "email": "marco.bianchi@example.com"
+    "squareMeters": 480,
+    "images": [
+      "/images-1759983620993-553353225.webp",
+      "/images-1759983620994-975403612.webp",
+      "/images-1759983621000-499009376.webp",
+      "/images-1759983621001-201355780.webp",
+      "/images-1759983621003-385244272.webp",
+      "/images-1759983621007-671299932.webp",
+      "/images-1759983621010-22764301.webp"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Mansão Contemporânea com Campo de Golfe Privativo",
+    "price": 14500000,
+    "description": "Residência sofisticada com arquitetura contemporânea, adega climatizada, spa e vista para o campo de golfe.",
+    "location": {
+      "city": "São Paulo",
+      "neighborhood": "Morumbi",
+      "region": "SP",
+      "country": "Brasil"
     },
-    "url": ""
+    "bedrooms": 6,
+    "bathrooms": 8,
+    "squareMeters": 1200,
+    "images": [
+      "/images-1759983808704-975108716.webp",
+      "/images-1759983808708-824660134.webp",
+      "/images-1759983808710-772459737.webp",
+      "/images-1759983808714-247047921.webp",
+      "/images-1759983808716-731976540.webp"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Casa Inteligente com Piscina Infinita",
+    "price": 6500000,
+    "description": "Casa moderna automatizada com controle por voz, cinema privativo e vista para o pôr do sol. Piscina infinita com borda de vidro.",
+    "location": {
+      "city": "Florianópolis",
+      "neighborhood": "Jurerê Internacional",
+      "region": "SC",
+      "country": "Brasil"
+    },
+    "bedrooms": 5,
+    "bathrooms": 6,
+    "squareMeters": 600,
+    "images": [
+      "/images-1759983974002-856264000.webp",
+      "/images-1759983974005-968255802.webp",
+      "/images-1759983974008-465650363.webp",
+      "/images-1759983974013-964456971.webp",
+      "/images-1759983974014-141214567.webp",
+      "/images-1759983974015-991412423.webp",
+      "/images-1759983974018-211172812.webp",
+      "/images-1759983974019-628998091.webp",
+      "/images-1759983974021-29077716.webp"
+    ]
   },
   {
     "id": 4,
-    "title": "Villa Mediterranea con Porto Privato",
-    "price": 45000000,
-    "description": "Villa esclusiva fronte mare con porto privato, eliporto, spa completa e cantina climatizzata.",
+    "title": "Villa Mediterrânea com Jardim Suspenso",
+    "price": 9800000,
+    "description": "Inspirada nas vilas da Toscana, esta mansão conta com jardim suspenso, lareira em mármore e piscina aquecida com borda infinita.",
     "location": {
-      "city": "Amalfi",
-      "neighborhood": "Costiera Amalfitana",
-      "region": "Campania",
-      "country": "Italy"
+      "city": "Cascais",
+      "neighborhood": "Estoril",
+      "region": "Lisboa",
+      "country": "Portugal"
     },
     "bedrooms": 7,
-    "bathrooms": 10,
-    "squareMeters": 2000,
-    "ownerContact": {
-      "name": "Francesca Romano",
-      "phone": "+39 320 666 7777",
-      "email": "francesca.romano@example.com"
-    },
-    "url": ""
+    "bathrooms": 9,
+    "squareMeters": 950,
+    "images": [
+      "/images-1759984079492-831024461.webp",
+      "/images-1759984079493-467873270.webp",
+      "/images-1759984079496-228913856.webp",
+      "/images-1759984079500-731750960.webp",
+      "/images-1759984079501-218710865.webp",
+      "/images-1759984079504-761912741.webp"
+    ]
   },
   {
     "id": 5,
-    "title": "Palazzo Storico Restaurato",
-    "price": 60000000,
-    "description": "Palazzo del XIX secolo completamente restaurato, con dettagli originali e dotato di domotica all’avanguardia.",
+    "title": "Cobertura Duplex com Terraço Gourmet",
+    "price": 5200000,
+    "description": "Cobertura duplex em prédio recém-entregue, com área gourmet, jacuzzi e elevador privativo panorâmico.",
     "location": {
-      "city": "Firenze",
-      "neighborhood": "Centro Storico",
-      "region": "Toscana",
-      "country": "Italy"
+      "city": "Porto Alegre",
+      "neighborhood": "Moinhos de Vento",
+      "region": "RS",
+      "country": "Brasil"
     },
-    "bedrooms": 10,
-    "bathrooms": 12,
-    "squareMeters": 3500,
-    "ownerContact": {
-      "name": "Elena Greco",
-      "phone": "+39 333 888 9999",
-      "email": "elena.greco@example.com"
+    "bedrooms": 4,
+    "bathrooms": 5,
+    "squareMeters": 420,
+    "images": [
+      "/images-1759984173923-118293374.webp",
+      "/images-1759984173925-919297490.webp",
+      "/images-1759984173929-550248560.webp",
+      "/images-1759984173931-805742104.webp",
+      "/images-1759984173932-708565947.webp",
+      "/images-1759984173932-21773636.webp",
+      "/images-1759984173934-194328607.webp"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Casa Minimalista com Lago Artificial",
+    "price": 7200000,
+    "description": "Residência de design minimalista com fachada em concreto aparente, ambientes integrados e lago artificial com peixes ornamentais.",
+    "location": {
+      "city": "Curitiba",
+      "neighborhood": "Santa Felicidade",
+      "region": "PR",
+      "country": "Brasil"
     },
-    "url": ""
+    "bedrooms": 5,
+    "bathrooms": 6,
+    "squareMeters": 540,
+    "images": [
+      "/images-1759984350333-608375146.webp",
+      "/images-1759984350336-223394734.webp",
+      "/images-1759984350340-962357680.webp",
+      "/images-1759984350344-689528167.webp",
+      "/images-1759984350345-210432464.webp",
+      "/images-1759984350348-289485670.webp",
+      "/images-1759984350350-995784700.webp"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Mansão Colonial com Salão de Festas e Adega",
+    "price": 8900000,
+    "description": "Propriedade inspirada na arquitetura colonial, com salão de festas, biblioteca, academia e adega subterrânea climatizada.",
+    "location": {
+      "city": "Belo Horizonte",
+      "neighborhood": "Mangabeiras",
+      "region": "MG",
+      "country": "Brasil"
+    },
+    "bedrooms": 6,
+    "bathrooms": 8,
+    "squareMeters": 880,
+    "images": [
+      "/images-1759984434488-437723101.webp",
+      "/images-1759984434491-737457917.webp",
+      "/images-1759984434495-894054074.webp",
+      "/images-1759984434499-209499649.webp",
+      "/images-1759984434501-529330652.webp",
+      "/images-1759984434503-851162245.webp",
+      "/images-1759984434506-822062796.webp"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Residência Sustentável com Energia Solar e Jardim Vertical",
+    "price": 5600000,
+    "description": "Casa ecológica com sistema de captação de água da chuva, energia solar e fachada verde com irrigação automatizada.",
+    "location": {
+      "city": "Brasília",
+      "neighborhood": "Lago Sul",
+      "region": "DF",
+      "country": "Brasil"
+    },
+    "bedrooms": 4,
+    "bathrooms": 5,
+    "squareMeters": 460,
+    "images": [
+      "/images-1759984517303-600972371.webp",
+      "/images-1759984517305-995910578.webp",
+      "/images-1759984517307-232011242.webp",
+      "/images-1759984517308-360958290.webp",
+      "/images-1759984517312-446553717.webp"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Apartamento Luxuoso Frente ao Mar",
+    "price": 7800000,
+    "description": "Apartamento com vista 180° para o mar, varanda ampla, jacuzzi, automação completa e design de interiores assinado.",
+    "location": {
+      "city": "Recife",
+      "neighborhood": "Boa Viagem",
+      "region": "PE",
+      "country": "Brasil"
+    },
+    "bedrooms": 5,
+    "bathrooms": 6,
+    "squareMeters": 510,
+    "images": [
+      "/images-1759984660096-736997590.webp",
+      "/images-1759984660099-443929781.webp",
+      "/images-1759984660102-40350411.webp",
+      "/images-1759984660103-377485526.webp",
+      "/images-1759984660107-383987192.webp",
+      "/images-1759984660108-761089414.webp",
+      "/images-1759984660110-871190846.webp",
+      "/images-1759984660112-967542281.webp"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Cobertura Imperial com Rooftop e Heliponto",
+    "price": 25000000,
+    "description": "Cobertura imperial com heliponto, rooftop panorâmico, piscina aquecida e vista 360° da cidade. Um dos imóveis mais exclusivos do país.",
+    "location": {
+      "city": "São Paulo",
+      "neighborhood": "Jardins",
+      "region": "SP",
+      "country": "Brasil"
+    },
+    "bedrooms": 8,
+    "bathrooms": 10,
+    "squareMeters": 1600,
+    "images": [
+      "/images-1759984723512-414030028.webp",
+      "/images-1759984723514-841329797.webp",
+      "/images-1759984723518-656093609.webp",
+      "/images-1759984723519-249555386.webp",
+      "/images-1759984723520-319397305.webp",
+      "/images-1759984723524-360546016.webp"
+    ]
   }
 ]

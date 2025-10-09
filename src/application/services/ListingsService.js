@@ -37,7 +37,23 @@ export default class ListingsService {
     const fieldsToUpdate = Object.fromEntries(
       Object.entries(listingDTO).filter(([_, value]) => value !== undefined),
     );
+
     const validatedListing = updateListingSchema.parse(fieldsToUpdate);
+
+    const existingListing = await ListingsRepository.getById(
+      validatedListing.id,
+    );
+    if (!existingListing) {
+      throw new AppError('Listing not found.', 404);
+    }
+
+    if (validatedListing.newImages && validatedListing.newImages.length > 0) {
+      validatedListing.images = [
+        ...(existingListing.images || []),
+        ...validatedListing.newImages,
+      ];
+      delete validatedListing.newImages;
+    }
 
     const listing = await ListingsRepository.update(validatedListing);
 

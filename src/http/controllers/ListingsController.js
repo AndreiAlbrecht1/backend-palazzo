@@ -17,7 +17,14 @@ export default class ListingsController {
   }
 
   static async create(req, res) {
-    const createListingData = req.body;
+    const createListingData = {
+      ...req.body,
+      price: Number(req.body.price),
+      bedrooms: Number(req.body.bedrooms),
+      bathrooms: Number(req.body.bathrooms),
+      squareMeters: Number(req.body.squareMeters),
+      images: req.files?.map((f) => `/${f.filename}`) || [],
+    };
     const createListingDTO = new CreateListingDTO(createListingData);
     const data = await ListingsService.create(createListingDTO);
 
@@ -28,6 +35,7 @@ export default class ListingsController {
     const updateListingData = {
       id: Number(req.params.id),
       ...req.body,
+      newImages: req.files?.map((f) => `/${f.filename}`) || [],
     };
     const updateListingDTO = new UpdateListingDTO(updateListingData);
     const data = await ListingsService.update(updateListingDTO);
