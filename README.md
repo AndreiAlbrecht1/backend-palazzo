@@ -18,6 +18,7 @@ Você pode testar todos os endpoints diretamente no Postman através do workspac
 * Express
 * Multer
 * Zod
+* Cors
 * JWT
 * Bcryptjs
 * ESLint + Prettier
@@ -53,29 +54,29 @@ A API estará disponível em `http://localhost:3000`.
 
 ## ⚡ Endpoints
 
-### Auth
+### Auth (Autenticação)
 
 * `POST /login` → Login do usuário
 * `POST /register` → Criar usuário
 * `POST /refresh` → Atualizar token
-* `GET /me` → Informações do usuário (rota protegida)
+* `GET /me` 🔒 → Informações do usuário
 
 ### Listings (Imóveis)
 
 * `GET /listings` → Listar todos os imóveis
 * `GET /listings/:id` → Buscar imóvel por ID
-* `POST /listings` → Criar novo imóvel (suporta upload de imagens)
-* `PATCH /listings/:id` → Atualizar imóvel (suporta upload de novas imagens)
-* `DELETE /listings/:id` → Deletar imóvel
+* `POST /listings` 🔒 → Criar novo imóvel (suporta upload de imagens)
+* `PATCH /listings/:id` 🔒 → Atualizar imóvel (suporta upload de novas imagens)
+* `DELETE /listings/:id` 🔒 → Deletar imóvel
 
-### Listings (Imóveis)
+### Users (Usuários)
 
-* `GET /users` → Listar todos os usuários
-* `GET /users/:id` → Buscar usuário por ID
-* `PATCH /users/:id` → Atualizar usuário
-* `DELETE /users/:id` → Deletar usuário
+* `GET /users` 🔒 → Listar todos os usuários
+* `GET /users/:id` 🔒 → Buscar usuário por ID
+* `PATCH /users/:id` 🔒 → Atualizar usuário
+* `DELETE /users/:id` 🔒 → Deletar usuário
 
-> **Observação:** Endpoints de `listings` e `users` são protegidos por token JWT.
+> **Observação:** Endpoints com 🔒 são protegidos por token JWT.
 
 ---
 
