@@ -25,7 +25,6 @@ export class UpdateListingDTO {
     this.bedrooms = bedrooms ?? undefined;
     this.bathrooms = bathrooms ?? undefined;
     this.squareMeters = squareMeters ?? undefined;
-    this.url = url ?? undefined;
     this.newImages = newImages || [];
   }
 }
