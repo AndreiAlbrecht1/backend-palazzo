@@ -1,7 +1,10 @@
 import { Sequelize } from 'sequelize';
 import databaseConfig from '../../shared/config/database.js';
+import User from '../../domain/models/User.js';
+import Listing from '../../domain/models/Listing.js';
+import Favorite from '../../domain/models/Favorite.js';
 
-const models = [];
+const models = [User, Listing, Favorite];
 
 class Database {
   constructor() {
