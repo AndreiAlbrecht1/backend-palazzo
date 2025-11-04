@@ -13,7 +13,7 @@ export const createListingSchema = z.object({
   squareMeters: z.number().positive(),
   images: z.array(z.string()).nonempty(),
   contactPhone: z.string(),
-  contactEmail: z.string().email(),
+  contactEmail: z.email(),
 });
 
 export const updateListingSchema = z.object({
@@ -29,6 +29,7 @@ export const updateListingSchema = z.object({
   bathrooms: z.number().int().nonnegative().optional(),
   squareMeters: z.number().positive().optional(),
   newImages: z.array(z.string()).optional(),
+  imagesToDelete: z.array(z.string()).optional(),
   contactPhone: z.string().optional(),
-  contactEmail: z.string().email().optional(),
+  contactEmail: z.email().optional(),
 });

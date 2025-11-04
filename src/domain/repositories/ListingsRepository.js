@@ -13,6 +13,7 @@ export default class ListingsRepository {
 
   static async create(listingData) {
     const listing = await Listing.create(listingData);
+
     return listing;
   }
 

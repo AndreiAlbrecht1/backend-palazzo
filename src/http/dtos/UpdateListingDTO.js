@@ -11,7 +11,8 @@ export class UpdateListingDTO {
     bedrooms,
     bathrooms,
     squareMeters,
-    images,
+    newImages,
+    imagesToDelete,
     contactPhone,
     contactEmail,
   }) {
@@ -26,8 +27,9 @@ export class UpdateListingDTO {
     this.bedrooms = bedrooms ?? undefined;
     this.bathrooms = bathrooms ?? undefined;
     this.squareMeters = squareMeters ?? undefined;
-    this.images = images ?? undefined;
     this.contactPhone = contactPhone ?? undefined;
     this.contactEmail = contactEmail ?? undefined;
+    this.newImages = newImages ?? undefined;
+    this.imagesToDelete = imagesToDelete ?? undefined;
   }
 }

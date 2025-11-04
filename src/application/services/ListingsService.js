@@ -4,6 +4,7 @@ import {
   createListingSchema,
   updateListingSchema,
 } from '../../domain/validators/listingValidator.js';
+import { S3Service } from './s3Service.js';
 
 export default class ListingsService {
   static async getAll() {
@@ -13,7 +14,11 @@ export default class ListingsService {
       throw new AppError('Listings not found.', 404);
     }
 
-    return listings;
+    const dataWithUrls = await Promise.all(
+      listings.map((listing) => S3Service.processListingImages(listing)),
+    );
+
+    return dataWithUrls;
   }
 
   static async getById(id) {
@@ -23,7 +28,9 @@ export default class ListingsService {
       throw new AppError('Listing not found.', 404);
     }
 
-    return listing;
+    const dataWithUrls = await S3Service.processListingImages(listing);
+
+    return dataWithUrls;
   }
 
   static async create(listingDTO) {
@@ -47,13 +54,27 @@ export default class ListingsService {
       throw new AppError('Listing not found.', 404);
     }
 
-    if (validatedListing.newImages && validatedListing.newImages.length > 0) {
-      validatedListing.images = [
-        ...(existingListing.images || []),
-        ...validatedListing.newImages,
-      ];
-      delete validatedListing.newImages;
+    let currentImages = existingListing.images || [];
+
+    if (
+      validatedListing.imagesToDelete &&
+      validatedListing.imagesToDelete.length > 0
+    ) {
+      await Promise.all(
+        validatedListing.imagesToDelete.map((key) => S3Service.deleteFile(key)),
+      );
+      const keysToDelete = new Set(validatedListing.imagesToDelete);
+      currentImages = currentImages.filter((key) => !keysToDelete.has(key));
     }
+
+    if (validatedListing.newImages && validatedListing.newImages.length > 0) {
+      currentImages = [...currentImages, ...validatedListing.newImages];
+    }
+
+    validatedListing.images = currentImages;
+
+    delete validatedListing.newImages;
+    delete validatedListing.imagesToDelete;
 
     const success = await ListingsRepository.update(validatedListing);
 
@@ -65,10 +86,20 @@ export default class ListingsService {
   }
 
   static async delete(id) {
+    const listing = await ListingsRepository.getById(id);
+
+    if (!listing) {
+      throw new AppError('Listing not found.', 404);
+    }
+
+    if (listing.images && listing.images.length > 0) {
+      await Promise.all(listing.images.map((key) => S3Service.deleteFile(key)));
+    }
+
     const success = await ListingsRepository.delete(id);
 
     if (!success) {
-      throw new AppError('Listing not found.', 404);
+      throw new AppError('Failed to delete listing.', 500);
     }
 
     return;
