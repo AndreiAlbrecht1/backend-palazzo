@@ -11,6 +11,7 @@ class Favorite extends Model {
             model: 'Users',
             key: 'id',
           },
+          onDelete: 'CASCADE',
         },
         listingId: {
           type: DataTypes.INTEGER,
@@ -19,6 +20,7 @@ class Favorite extends Model {
             model: 'Listings',
             key: 'id',
           },
+          onDelete: 'CASCADE',
         },
       },
       {
@@ -33,10 +35,12 @@ class Favorite extends Model {
   static associate(models) {
     this.belongsTo(models.User, {
       foreignKey: 'userId',
+      as: 'user',
     });
 
     this.belongsTo(models.Listing, {
       foreignKey: 'listingId',
+      as: 'listing',
     });
   }
 }

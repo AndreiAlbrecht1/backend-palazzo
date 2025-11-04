@@ -28,6 +28,7 @@ export default class UsersService {
     const fieldsToUpdate = Object.fromEntries(
       Object.entries(userDTO).filter(([_, value]) => value !== undefined),
     );
+
     const validatedUser = updateUserSchema.parse(fieldsToUpdate);
 
     const user = await UsersRepository.getById(validatedUser.id);
@@ -57,21 +58,22 @@ export default class UsersService {
     }
 
     if (validatedUser.email && validatedUser.email !== user.email) {
-      const emailExists = await UsersRepository.emailExists(
+      const emailExists = await UsersRepository.findByEmail(
         validatedUser.email,
       );
       if (emailExists) {
         throw new AppError('Email already registered.', 400);
       }
     }
+    console.log(validatedUser);
 
-    const updatedUser = await UsersRepository.update(validatedUser);
+    const success = await UsersRepository.update(validatedUser);
 
-    if (!updatedUser) {
+    if (!success) {
       throw new AppError('No data was updated.', 404);
     }
 
-    return updatedUser;
+    return;
   }
 
   static async delete(id) {

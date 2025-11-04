@@ -55,13 +55,13 @@ export default class ListingsService {
       delete validatedListing.newImages;
     }
 
-    const listing = await ListingsRepository.update(validatedListing);
+    const success = await ListingsRepository.update(validatedListing);
 
-    if (!listing) {
-      throw new AppError('Listing not found.', 404);
+    if (!success) {
+      throw new AppError('No data was updated.', 404);
     }
 
-    return listing;
+    return;
   }
 
   static async delete(id) {

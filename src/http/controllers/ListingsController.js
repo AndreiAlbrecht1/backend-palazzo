@@ -23,6 +23,7 @@ export default class ListingsController {
       bedrooms: Number(req.body.bedrooms),
       bathrooms: Number(req.body.bathrooms),
       squareMeters: Number(req.body.squareMeters),
+      // verificar como fazer
       images: req.files?.map((f) => `/${f.filename}`) || [],
     };
     const createListingDTO = new CreateListingDTO(createListingData);
@@ -35,19 +36,12 @@ export default class ListingsController {
     const updateListingData = {
       id: Number(req.params.id),
       ...req.body,
-      price: req.body.price ? Number(req.body.price) : undefined,
-      bedrooms: req.body.bedrooms ? Number(req.body.bedrooms) : undefined,
-      bathrooms: req.body.bathrooms ? Number(req.body.bathrooms) : undefined,
-      squareMeters: req.body.squareMeters
-        ? Number(req.body.squareMeters)
-        : undefined,
-      newImages: req.files?.map((f) => `/${f.filename}`) || [],
     };
 
     const updateListingDTO = new UpdateListingDTO(updateListingData);
-    const data = await ListingsService.update(updateListingDTO);
+    await ListingsService.update(updateListingDTO);
 
-    return res.status(200).json(data);
+    return res.status(204).json();
   }
 
   static async delete(req, res) {

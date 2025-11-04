@@ -22,7 +22,7 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      hashedPassword: {
+      hashed_password: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -31,12 +31,12 @@ module.exports = {
         allowNull: false,
         defaultValue: 'user',
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
@@ -86,7 +86,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      squareMeters: {
+      square_meters: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
@@ -95,20 +95,20 @@ module.exports = {
         allowNull: false,
         defaultValue: [],
       },
-      contactPhone: {
+      contact_phone: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      contactEmail: {
+      contact_email: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
@@ -122,7 +122,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      userId: {
+      user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -131,7 +131,7 @@ module.exports = {
         },
         onDelete: 'CASCADE',
       },
-      listingId: {
+      listing_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -140,12 +140,12 @@ module.exports = {
         },
         onDelete: 'CASCADE',
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
@@ -153,7 +153,7 @@ module.exports = {
     });
 
     await queryInterface.addConstraint('Favorites', {
-      fields: ['userId', 'listingId'],
+      fields: ['user_id', 'listing_id'],
       type: 'unique',
       name: 'unique_user_listing_favorite',
     });

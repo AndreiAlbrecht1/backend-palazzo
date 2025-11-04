@@ -41,7 +41,7 @@ class User extends Model {
 
   static associate(models) {
     this.belongsToMany(models.Listing, {
-      through: models.Favorite,
+      through: 'Favorites',
       foreignKey: 'userId',
       as: 'FavoriteListings',
     });

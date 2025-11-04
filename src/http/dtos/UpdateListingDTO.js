@@ -4,27 +4,30 @@ export class UpdateListingDTO {
     title,
     price,
     description,
-    location,
+    city,
+    neighborhood,
+    region,
+    country,
     bedrooms,
     bathrooms,
     squareMeters,
-    newImages,
+    images,
+    contactPhone,
+    contactEmail,
   }) {
     this.id = id;
     this.title = title ?? undefined;
     this.price = price ?? undefined;
     this.description = description ?? undefined;
-    this.location = location
-      ? {
-          city: location.city,
-          neighborhood: location.neighborhood,
-          region: location.region,
-          country: location.country,
-        }
-      : undefined;
+    this.city = city ?? undefined;
+    this.neighborhood = neighborhood ?? undefined;
+    this.region = region ?? undefined;
+    this.country = country ?? undefined;
     this.bedrooms = bedrooms ?? undefined;
     this.bathrooms = bathrooms ?? undefined;
     this.squareMeters = squareMeters ?? undefined;
-    this.newImages = newImages || [];
+    this.images = images ?? undefined;
+    this.contactPhone = contactPhone ?? undefined;
+    this.contactEmail = contactEmail ?? undefined;
   }
 }

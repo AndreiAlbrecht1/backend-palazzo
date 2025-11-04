@@ -14,13 +14,15 @@ class Database {
   init() {
     this.connection = new Sequelize(databaseConfig);
 
+    models.forEach((model) => model.init(this.connection));
+
     models.forEach((model) => {
-      model.init(this.connection);
-      if (model.associate) {
+      if (typeof model.associate === 'function') {
         model.associate(this.connection.models);
       }
     });
   }
+
   getQueryInterface() {
     if (!this.connection) throw new Error('Database not connected.');
     return this.connection.getQueryInterface();
