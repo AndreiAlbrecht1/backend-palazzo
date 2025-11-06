@@ -5,6 +5,7 @@ import {
   addFavoriteSchema,
   removeFavoriteSchema,
 } from '../../domain/validators/favoriteValidator.js';
+import { S3Service } from './s3Service.js';
 
 export default class FavoritesService {
   static async add(userId, favoriteData) {
@@ -22,15 +23,12 @@ export default class FavoritesService {
     );
 
     if (existingFavorite) {
-      throw new AppError('Listing already favorited.', 400);
+      return;
     }
 
-    const favorite = await FavoritesRepository.create(
-      userId,
-      validatedData.listingId,
-    );
+    await FavoritesRepository.create(userId, validatedData.listingId);
 
-    return favorite;
+    return;
   }
 
   static async remove(userId, favoriteData) {
@@ -42,7 +40,7 @@ export default class FavoritesService {
     );
 
     if (!existingFavorite) {
-      throw new AppError('Favorite not found.', 404);
+      return;
     }
 
     const success = await FavoritesRepository.delete(
@@ -60,6 +58,18 @@ export default class FavoritesService {
   static async get(userId) {
     const favorites = await FavoritesRepository.findByUserId(userId);
 
-    return favorites;
+    const favoritesWithUrls = await Promise.all(
+      favorites.map(async (favorite) => {
+        const favoriteData = favorite.toJSON
+          ? favorite.toJSON()
+          : { ...favorite };
+        favoriteData.listing = await S3Service.processListingImages(
+          favorite.listing,
+        );
+        return favoriteData;
+      }),
+    );
+
+    return favoritesWithUrls;
   }
 }
