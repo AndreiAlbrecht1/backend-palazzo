@@ -6,11 +6,14 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
-    "migrate": "npx sequelize-cli db:migrate",
-    "migrate:undo": "npx sequelize-cli db:migrate:undo:all",
-    "seed": "npx sequelize-cli db:seed:all",
-    "seed:undo": "npx sequelize-cli db:seed:undo:all",
-    "db:reset": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
+    "db:start": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:migrate:undo": "npx sequelize-cli db:migrate:undo:all",
+    "db:seed": "npx sequelize-cli db:seed:all",
+    "db:seed:undo": "npx sequelize-cli db:seed:undo:all",
+    "db:reset": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "docker:wait": "node -e \"setTimeout(() => process.exit(0), 5000)\"",
+    "quick-start": "npm install && docker-compose up -d && npm run docker:wait && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all && nodemon src/server.js"
   },
   "keywords": [],
   "author": "",

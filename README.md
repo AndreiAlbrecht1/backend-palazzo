@@ -18,6 +18,7 @@ Você pode testar todos os endpoints diretamente no Postman através do workspac
 * **Express** - Framework web
 * **Sequelize** - ORM para PostgreSQL
 * **PostgreSQL** - Banco de dados relacional
+* **Docker Compose** - Orquestração de containers
 * **AWS S3** - Armazenamento de imagens
 * **Multer** - Upload de arquivos
 * **Multer-S3** - Upload direto para S3
@@ -29,22 +30,28 @@ Você pode testar todos os endpoints diretamente no Postman através do workspac
 
 ---
 
+## 📋 Requisitos
+
+Antes de começar, certifique-se de ter instalado:
+
+* **Node.js** (v14 ou superior)
+* **Docker** e **Docker Compose**
+* **Conta AWS** com bucket S3 configurado e credenciais de acesso (Access Key ID e Secret Access Key)
+
+---
+
 ## 🚀 Instalação
 
-1. Clone o repositório:
+### 1. Clone o repositório:
 
 ```bash
 git clone https://github.com/AndreiAlbrecht1/backend-palazzo.git
 cd backend-palazzo
 ```
 
-2. Instale as dependências:
+### 2. Configure as variáveis de ambiente:
 
-```bash
-npm install
-```
-
-3. Crie um arquivo `.env` com as variáveis necessárias segundo o `.env.example`:
+Crie um arquivo `.env` na raiz do projeto com as variáveis necessárias (baseado no `.env.example`):
 
 ```env
 # Server
@@ -68,22 +75,44 @@ AWS_SECRET_ACCESS_KEY=sua_secret_key
 AWS_BUCKET_NAME=seu_bucket
 ```
 
-4. Configure o banco de dados PostgreSQL:
+### 3. Iniciar o projeto:
+
+Você tem duas opções:
+
+#### **Opção A: Início Rápido (Recomendado)**
+
+Execute um único comando que faz tudo automaticamente:
 
 ```bash
-# Criar banco de dados
-createdb palazzo
-
-# Rodar migrations
-npm run db:migrate
-
-# (Opcional) Rodar seeds para dados de exemplo
-npm run db:seed
+npm run quick-start
 ```
 
-5. Rode a API:
+Este comando irá:
+- Instalar as dependências
+- Iniciar o Docker Compose (PostgreSQL)
+- Aguardar o banco ficar pronto
+- Executar as migrations
+- Executar os seeds (dados de exemplo)
+- Iniciar o servidor em modo de desenvolvimento
+
+#### **Opção B: Passo a Passo**
+
+Se preferir executar manualmente:
 
 ```bash
+# 1. Instalar dependências
+npm install
+
+# 2. Iniciar o banco de dados com Docker Compose
+docker-compose up -d
+
+# 3. Rodar migrations
+npm run db:migrate
+
+# 4. (Opcional) Rodar seeds para dados de exemplo
+npm run db:seed
+
+# 5. Iniciar o servidor
 npm run dev
 ```
 
