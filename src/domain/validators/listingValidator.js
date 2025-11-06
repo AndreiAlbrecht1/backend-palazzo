@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 export const createListingSchema = z.object({
   title: z.string(),
+  type: z.enum(['house', 'apartment', 'penthouse', 'loft']).default('house'),
   price: z.number().positive(),
   description: z.string(),
   city: z.string(),
@@ -19,6 +20,7 @@ export const createListingSchema = z.object({
 export const updateListingSchema = z.object({
   id: z.number(),
   title: z.string().optional(),
+  type: z.enum(['house', 'apartment', 'penthouse', 'loft']).optional(),
   price: z.number().positive().optional(),
   description: z.string().optional(),
   city: z.string().optional(),

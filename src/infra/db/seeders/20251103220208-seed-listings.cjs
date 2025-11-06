@@ -9,8 +9,8 @@ module.exports = {
       'Listings',
       [
         {
-          id: 1,
-          title: 'Penthouse Exclusiva com Vista Panorâmica para o Mar',
+          title: 'Cobertura Exclusiva com Vista Panorâmica para o Mar',
+          type: 'penthouse',
           price: 8200000,
           description:
             'Cobertura triplex de alto padrão, com piscina privativa, jacuzzi e área gourmet integrada ao terraço. Vista deslumbrante para o Atlântico.',
@@ -37,8 +37,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 2,
           title: 'Mansão Contemporânea com Campo de Golfe Privativo',
+          type: 'house',
           price: 14500000,
           description:
             'Residência sofisticada com arquitetura contemporânea, adega climatizada, spa e vista para o campo de golfe.',
@@ -65,8 +65,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 3,
           title: 'Casa Inteligente com Piscina Infinita',
+          type: 'house',
           price: 6500000,
           description:
             'Casa moderna automatizada com controle por voz, cinema privativo e vista para o pôr do sol. Piscina infinita com borda de vidro.',
@@ -93,8 +93,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 4,
           title: 'Villa Mediterrânea com Jardim Suspenso',
+          type: 'house',
           price: 9800000,
           description:
             'Inspirada nas vilas da Toscana, esta mansão conta com jardim suspenso, lareira em mármore e piscina aquecida com borda infinita.',
@@ -121,8 +121,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 5,
           title: 'Cobertura Duplex com Terraço Gourmet',
+          type: 'penthouse',
           price: 5200000,
           description:
             'Cobertura duplex em prédio recém-entregue, com área gourmet, jacuzzi e elevador privativo panorâmico.',
@@ -149,8 +149,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 6,
           title: 'Casa Minimalista com Lago Artificial',
+          type: 'house',
           price: 7200000,
           description:
             'Residência de design minimalista com fachada em concreto aparente, ambientes integrados e lago artificial com peixes ornamentais.',
@@ -177,8 +177,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 7,
           title: 'Mansão Colonial com Salão de Festas e Adega',
+          type: 'house',
           price: 8900000,
           description:
             'Propriedade inspirada na arquitetura colonial, com salão de festas, biblioteca, academia e adega subterrânea climatizada.',
@@ -205,8 +205,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 8,
           title: 'Residência Sustentável com Energia Solar e Jardim Vertical',
+          type: 'house',
           price: 5600000,
           description:
             'Casa ecológica com sistema de captação de água da chuva, energia solar e fachada verde com irrigação automatizada.',
@@ -233,8 +233,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 9,
           title: 'Apartamento Luxuoso Frente ao Mar',
+          type: 'apartment',
           price: 7800000,
           description:
             'Apartamento com vista 180° para o mar, varanda ampla, jacuzzi, automação completa e design de interiores assinado.',
@@ -261,8 +261,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 10,
           title: 'Cobertura Imperial com Rooftop e Heliponto',
+          type: 'penthouse',
           price: 25000000,
           description:
             'Cobertura imperial com heliponto, rooftop panorâmico, piscina aquecida e vista 360° da cidade. Um dos imóveis mais exclusivos do país.',
@@ -289,8 +289,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 11,
           title: 'Casa de Campo com Vinícola Particular',
+          type: 'house',
           price: 12000000,
           description:
             'Propriedade rural de luxo com vinícola própria, casa principal, casa de hóspedes e vista para as montanhas.',
@@ -317,8 +317,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 12,
           title: 'Loft Industrial com Pé-Direito Triplo',
+          type: 'loft',
           price: 3800000,
           description:
             'Loft estilo industrial em antiga fábrica revitalizada, com pé-direito triplo, mezanino e acabamentos em ferro e madeira de demolição.',
@@ -345,8 +345,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 13,
           title: 'Mansão Neoclássica com Salão de Baile',
+          type: 'house',
           price: 18500000,
           description:
             'Mansão em estilo neoclássico com salão de baile, teatro privativo, galeria de arte e jardins franceses projetados por paisagista renomado.',
@@ -373,8 +373,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 14,
           title: 'Casa de Praia com Acesso Privativo à Areia',
+          type: 'house',
           price: 11200000,
           description:
             'Casa de alto padrão com acesso direto à praia, deck em madeira nobre, sauna e churrasqueira gourmet frente ao mar.',
@@ -401,8 +401,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 15,
           title: 'Apartamento Studio Design Contemporâneo',
+          type: 'apartment',
           price: 1950000,
           description:
             'Studio compacto e sofisticado com móveis planejados, automação residencial e localização privilegiada no centro financeiro.',

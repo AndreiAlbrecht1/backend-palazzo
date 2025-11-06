@@ -24,8 +24,6 @@ export default async (req, res, next) => {
 
     return next();
   } catch (error) {
-    return res
-      .status(error.statusCode || 401)
-      .json({ error: error.message || 'Invalid or expired token.' });
+    return res.status(401).json({ error: 'Invalid or expired token.' });
   }
 };

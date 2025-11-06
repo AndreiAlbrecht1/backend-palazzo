@@ -1,6 +1,7 @@
 export class CreateListingDTO {
   constructor({
     title,
+    type,
     price,
     description,
     city,
@@ -15,6 +16,7 @@ export class CreateListingDTO {
     contactEmail,
   }) {
     this.title = title;
+    this.type = type;
     this.price = price;
     this.description = description;
     this.city = city;

@@ -6,7 +6,6 @@ module.exports = {
       'Users',
       [
         {
-          id: 1,
           name: 'Mariana Silva',
           phone: '55981234567',
           email: 'mariana.silva@example.com',
@@ -17,7 +16,6 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 2,
           name: 'Lucas Pereira',
           phone: '55982123456',
           email: 'lucas.pereira@example.com',
@@ -28,7 +26,6 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 3,
           name: 'Ana Costa',
           phone: '55983123455',
           email: 'ana.costa@example.com',
@@ -39,7 +36,6 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 4,
           name: 'Pedro Rocha',
           phone: '55984123454',
           email: 'pedro.rocha@example.com',
@@ -50,7 +46,6 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 5,
           name: 'Beatriz Almeida',
           phone: '55985123453',
           email: 'beatriz.almeida@example.com',
@@ -61,7 +56,6 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 6,
           name: 'Rafael Gonçalves',
           phone: '55986123452',
           email: 'rafael.goncalves@example.com',
@@ -72,7 +66,6 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 7,
           name: 'Carolina Mendes',
           phone: '55987123451',
           email: 'carolina.mendes@example.com',
@@ -83,7 +76,6 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 8,
           name: 'Thiago Fernandes',
           phone: '55988123450',
           email: 'thiago.fernandes@example.com',
@@ -94,7 +86,6 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 9,
           name: 'Sofia Ramos',
           phone: '55989123449',
           email: 'sofia.ramos@example.com',
@@ -105,7 +96,6 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          id: 10,
           name: 'Gustavo Lima',
           phone: '55980123448',
           email: 'gustavo.lima@example.com',
