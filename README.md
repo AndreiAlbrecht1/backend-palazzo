@@ -176,19 +176,19 @@ A API suporta diversos filtros e paginação para listar imóveis:
 ### Exemplos:
 
 ```bash
-# Listar primeira página (6 itens)
+# Listar primeira página com 6 itens (padrão)
 GET /api/listings
 
 # Segunda página com 10 itens
 GET /api/listings?page=2&limit=10
 
-# Casas com 3+ quartos no Brasil
-GET /api/listings?type=house&country=Brasil&minBedrooms=3
+# Casas com 3+ quartos no Brasil (primeira página)
+GET /api/listings?type=house&country=Brasil&minBedrooms=3&page=1
 
-# Apartamentos no Rio entre R$ 500k e R$ 2M
-GET /api/listings?type=apartment&city=Rio de Janeiro&minPrice=500000&maxPrice=2000000
+# Apartamentos no Rio entre R$ 500k e R$ 2M (segunda página, 12 itens)
+GET /api/listings?type=apartment&city=Rio de Janeiro&minPrice=500000&maxPrice=2000000&page=2&limit=12
 
-# Busca por "piscina" com 2+ banheiros
+# Busca por "piscina" com 2+ banheiros (página 1)
 GET /api/listings?search=piscina&minBathrooms=2&page=1
 ```
 

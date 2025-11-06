@@ -8,6 +8,27 @@ Lista todos os listings com suporte a filtros via query parameters.
 
 ## Query Parameters
 
+### Paginação
+
+A API suporta paginação para listar imóveis de forma eficiente.
+
+**Parâmetros de paginação:**
+- `page` - Número da página (padrão: 1)
+- `limit` - Quantidade de itens por página (padrão: 6)
+
+**Exemplo:**
+```bash
+GET /api/listings?page=1&limit=6
+GET /api/listings?page=2&limit=10
+GET /api/listings?page=1&limit=20
+```
+
+**cURL:**
+```bash
+curl "http://localhost:3000/api/listings?page=1&limit=6"
+curl "http://localhost:3000/api/listings?page=2&limit=10"
+```
+
 ### 1. Filtro por Tipo (`type`)
 
 Filtra os imóveis por tipo específico.
@@ -155,26 +176,26 @@ curl "http://localhost:3000/api/listings?maxPrice=2000000"
 curl "http://localhost:3000/api/listings?minPrice=500000&maxPrice=2000000"
 ```
 
-### 9. Combinando Filtros
+### 9. Combinando Filtros e Paginação
 
-Você pode combinar múltiplos filtros na mesma requisição.
+Você pode combinar múltiplos filtros e paginação na mesma requisição.
 
 **Exemplo:**
 ```bash
-GET /api/listings?type=house&search=piscina
-GET /api/listings?type=apartment&search=rio de janeiro
-GET /api/listings?country=Brasil&search=Sudeste&minBedrooms=3
-GET /api/listings?country=Brasil&city=Rio de Janeiro&minBedrooms=3
-GET /api/listings?minPrice=500000&maxPrice=2000000&minBedrooms=3&minBathrooms=2
+GET /api/listings?type=house&search=piscina&page=1&limit=6
+GET /api/listings?type=apartment&search=rio de janeiro&page=2&limit=10
+GET /api/listings?country=Brasil&search=Sudeste&minBedrooms=3&page=1
+GET /api/listings?country=Brasil&city=Rio de Janeiro&minBedrooms=3&page=1&limit=12
+GET /api/listings?minPrice=500000&maxPrice=2000000&minBedrooms=3&minBathrooms=2&page=1
 ```
 
 **cURL:**
 ```bash
-curl "http://localhost:3000/api/listings?type=house&search=piscina"
-curl "http://localhost:3000/api/listings?type=apartment&search=leblon"
-curl "http://localhost:3000/api/listings?country=Brasil&search=Sudeste&minBedrooms=3"
-curl "http://localhost:3000/api/listings?country=Brasil&city=Rio de Janeiro&minBedrooms=3"
-curl "http://localhost:3000/api/listings?minPrice=500000&maxPrice=2000000&minBedrooms=3&minBathrooms=2"
+curl "http://localhost:3000/api/listings?type=house&search=piscina&page=1&limit=6"
+curl "http://localhost:3000/api/listings?type=apartment&search=leblon&page=1"
+curl "http://localhost:3000/api/listings?country=Brasil&search=Sudeste&minBedrooms=3&page=2&limit=10"
+curl "http://localhost:3000/api/listings?country=Brasil&city=Rio de Janeiro&minBedrooms=3&page=1"
+curl "http://localhost:3000/api/listings?minPrice=500000&maxPrice=2000000&minBedrooms=3&minBathrooms=2&page=1&limit=12"
 ```
 
 ## Exemplos de Uso
@@ -234,10 +255,12 @@ curl "http://localhost:3000/api/listings?type=house&search=piscina&minSquareMete
 curl "http://localhost:3000/api/listings?type=apartment&city=São Paulo&minBedrooms=3&minBathrooms=2&minSquareMeters=150&minPrice=800000"
 ```
 
-## Resumo dos Filtros Disponíveis
+## Resumo dos Parâmetros Disponíveis
 
 | Parâmetro | Tipo | Descrição | Exemplo |
 |-----------|------|-----------|---------|
+| `page` | Number | Número da página (padrão: 1) | `page=1` |
+| `limit` | Number | Itens por página (padrão: 6) | `limit=10` |
 | `type` | String | Tipo do imóvel (house, apartment, penthouse, loft) | `type=house` |
 | `search` | String | Busca em título, descrição, cidade, bairro, região e país | `search=piscina` |
 | `country` | String | Filtro exato por país | `country=Brasil` |
@@ -250,30 +273,38 @@ curl "http://localhost:3000/api/listings?type=apartment&city=São Paulo&minBedro
 
 ## Resposta
 
-A resposta mantém o mesmo formato JSON padrão:
+A resposta segue o formato JSON com paginação:
 
 ```json
-[
-  {
-    "id": 1,
-    "title": "Penthouse Exclusiva com Vista Panorâmica para o Mar",
-    "type": "penthouse",
-    "price": "8200000",
-    "description": "Cobertura triplex de alto padrão...",
-    "city": "Rio de Janeiro",
-    "neighborhood": "Leblon",
-    "region": "RJ",
-    "country": "Brasil",
-    "bedrooms": 4,
-    "bathrooms": 5,
-    "squareMeters": 480,
-    "images": [...],
-    "contactPhone": "55981234567",
-    "contactEmail": "mariana.silva@example.com",
-    "createdAt": "2025-11-06T...",
-    "updatedAt": "2025-11-06T..."
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Penthouse Exclusiva com Vista Panorâmica para o Mar",
+      "type": "penthouse",
+      "price": "8200000",
+      "description": "Cobertura triplex de alto padrão...",
+      "city": "Rio de Janeiro",
+      "neighborhood": "Leblon",
+      "region": "RJ",
+      "country": "Brasil",
+      "bedrooms": 4,
+      "bathrooms": 5,
+      "squareMeters": 480,
+      "images": [...],
+      "contactPhone": "55981234567",
+      "contactEmail": "mariana.silva@example.com",
+      "createdAt": "2025-11-06T...",
+      "updatedAt": "2025-11-06T..."
+    }
+  ],
+  "pagination": {
+    "currentPage": 1,
+    "totalPages": 5,
+    "totalItems": 28,
+    "itemsPerPage": 6
   }
-]
+}
 ```
 
 ## Distribuição de Tipos nos Seeders
@@ -285,6 +316,7 @@ A resposta mantém o mesmo formato JSON padrão:
 
 ## Notas
 
-- Os filtros são opcionais - se nenhum filtro for fornecido, todos os listings serão retornados
+- Os filtros e paginação são opcionais - se nenhum parâmetro for fornecido, retornará a primeira página com 6 itens
 - A busca de texto é case-insensitive e usa LIKE pattern matching
 - Os resultados são ordenados por data de criação (mais recentes primeiro)
+- A resposta inclui informações de paginação (`currentPage`, `totalPages`, `totalItems`, `itemsPerPage`)
