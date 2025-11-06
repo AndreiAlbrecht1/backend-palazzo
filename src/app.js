@@ -13,9 +13,14 @@ app.get('/', async (req, res) => {
   res.status(200).json({ ok: true });
 });
 
-app.use('/', authRoutes);
-app.use('/listings', listingsRoutes);
-app.use('/users', authMiddleware, usersRoutes);
+const apiRouter = express.Router();
+
+apiRouter.use('/', authRoutes);
+apiRouter.use('/listings', listingsRoutes);
+apiRouter.use('/users', authMiddleware, usersRoutes);
+
+app.use('/api', apiRouter);
+
 app.use(handlerError);
 
 export default app;
