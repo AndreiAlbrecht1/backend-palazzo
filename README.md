@@ -20,6 +20,7 @@ Você pode testar todos os endpoints diretamente no Postman através do workspac
 * **PostgreSQL** - Banco de dados relacional
 * **Docker Compose** - Orquestração de containers
 * **AWS S3** - Armazenamento de imagens
+* **Nominatim API** - Geocodificação (OpenStreetMap)
 * **Multer** - Upload de arquivos
 * **Multer-S3** - Upload direto para S3
 * **Zod** - Validação de schemas
@@ -231,6 +232,7 @@ src/
 │  └─ services/          # Casos de uso e lógica de negócio
 │     ├─ AuthService.js
 │     ├─ FavoritesService.js
+│     ├─ GeocodingService.js    # Geocodificação automática
 │     ├─ ListingsService.js
 │     ├─ UsersService.js
 │     └─ s3Service.js
@@ -283,7 +285,9 @@ src/
 
 **Listings**
 - id, title, type, price, description, city, neighborhood, region, country
-- bedrooms, bathrooms, squareMeters, images (array), contactPhone, contactEmail, timestamps
+- bedrooms, bathrooms, squareMeters, images (array), contactPhone, contactEmail
+- **latitude, longitude** (coordenadas geográficas geradas automaticamente)
+- timestamps
 
 **Favorites** (Tabela de junção)
 - userId, listingId, timestamps
@@ -308,6 +312,15 @@ npm run db:seed:undo
 ```
 
 ---
+
+## 🌍 Geocodificação Automática
+
+A API utiliza a **Nominatim API (OpenStreetMap)** para gerar automaticamente as coordenadas geográficas (`latitude` e `longitude`) dos imóveis.
+
+### Como funciona:
+
+- **Na criação**: Ao criar um novo imóvel, a API busca as coordenadas com base no endereço completo (bairro, cidade, região, país)
+- **Na atualização**: Se algum campo de endereço for alterado, as coordenadas são recalculadas automaticamente
 
 ## 📤 Upload de Imagens
 
@@ -357,10 +370,23 @@ Use o endpoint `/api/refresh` para renovar o access token.
 ## 📝 Scripts NPM
 
 ```bash
-npm run dev          # Inicia servidor em modo desenvolvimento
-npm run db:migrate   # Roda migrations
-npm run db:seed      # Roda seeds
-npm run db:reset     # Reset completo do banco
+# Desenvolvimento
+npm run dev              # Inicia servidor em modo desenvolvimento (com nodemon)
+npm start                # Inicia servidor em modo produção
+
+# Quick Start
+npm run quick-start      # Setup completo (install + docker + migrate + seed + dev)
+
+# Banco de Dados
+npm run db:start         # Executa migrations e seeds
+npm run db:migrate       # Executa migrations
+npm run db:migrate:undo  # Desfaz todas as migrations
+npm run db:seed          # Executa seeds (dados de exemplo)
+npm run db:seed:undo     # Remove dados dos seeds
+npm run db:reset         # Reset completo (undo migrations + migrate + seed)
+
+# Docker
+npm run docker:wait      # Aguarda 5s (usado internamente pelo quick-start)
 ```
 
 ---

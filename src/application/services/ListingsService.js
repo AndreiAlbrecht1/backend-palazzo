@@ -5,6 +5,7 @@ import {
   updateListingSchema,
 } from '../../domain/validators/listingValidator.js';
 import { S3Service } from './s3Service.js';
+import GeocodingService from './GeocodingService.js';
 
 export default class ListingsService {
   static async getAll(filters = {}, page = 1, limit = 6) {
@@ -55,6 +56,17 @@ export default class ListingsService {
 
   static async create(listingDTO) {
     const validatedListing = createListingSchema.parse(listingDTO);
+
+    const { latitude, longitude } = await GeocodingService.getCoordinates(
+      validatedListing.city,
+      validatedListing.neighborhood,
+      validatedListing.region,
+      validatedListing.country,
+    );
+
+    validatedListing.latitude = latitude;
+    validatedListing.longitude = longitude;
+
     const listing = await ListingsRepository.create(validatedListing);
 
     return listing;
@@ -72,6 +84,24 @@ export default class ListingsService {
     );
     if (!existingListing) {
       throw new AppError('Listing not found.', 404);
+    }
+
+    const addressChanged =
+      validatedListing.city ||
+      validatedListing.neighborhood ||
+      validatedListing.region ||
+      validatedListing.country;
+
+    if (addressChanged) {
+      const { latitude, longitude } = await GeocodingService.getCoordinates(
+        validatedListing.city || existingListing.city,
+        validatedListing.neighborhood || existingListing.neighborhood,
+        validatedListing.region || existingListing.region,
+        validatedListing.country || existingListing.country,
+      );
+
+      validatedListing.latitude = latitude;
+      validatedListing.longitude = longitude;
     }
 
     let currentImages = existingListing.images || [];
