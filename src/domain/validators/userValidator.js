@@ -11,6 +11,7 @@ export const createUserSchema = z.object({
     .refine((val) => /[A-Z]/.test(val))
     .refine((val) => /[0-9]/.test(val))
     .refine((val) => /[!@#$%^&*(),.?":{}|<>]/.test(val)),
+  role: z.string(),
 });
 
 export const updateUserSchema = z

@@ -1,73 +1,45 @@
-import { readFile, writeFile } from 'fs/promises';
-import { fileURLToPath } from 'url';
-import path from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import User from '../models/User.js';
 
 export default class UsersRepository {
-  static filePath = path.join(__dirname, '../../data/dataUsers.json');
-
   static async getAll() {
-    const data = await readFile(this.filePath, 'utf-8');
-    return JSON.parse(data);
+    const allUsers = await User.findAll();
+    return allUsers;
   }
 
   static async getById(id) {
-    const data = await this.getAll();
-
-    return data.find((p) => p.id === Number(id));
+    const user = await User.findByPk(id);
+    return user;
   }
 
   static async findByEmail(email) {
-    const data = await this.getAll();
-    return data.find((p) => p.email === email);
+    const user = await User.findOne({
+      where: { email: email },
+    });
+
+    return user;
   }
 
-  static async create(user) {
-    const data = await this.getAll();
-    const id = data.length ? data[data.length - 1].id + 1 : 1;
-    const userWithId = { id, ...user };
-    data.push(userWithId);
-    await writeFile(this.filePath, JSON.stringify(data, null, 2));
-    const { hashedPassword, ...userWithoutPassword } = userWithId;
-    return userWithoutPassword;
+  static async create(userData) {
+    const user = await User.create(userData);
+    return user;
   }
 
   static async update(user) {
-    const data = await this.getAll();
-
-    const index = data.findIndex((p) => p.id === user.id);
-
-    if (index === -1) {
-      return false;
+    const fieldsToUpdate = {};
+    for (const [key, value] of Object.entries(user)) {
+      if (value !== undefined) {
+        fieldsToUpdate[key] = value;
+      }
     }
+    const [updatedRowsCount] = await User.update(fieldsToUpdate, {
+      where: { id: user.id },
+    });
 
-    const updatedUser = { ...data[index], ...user };
-    data[index] = updatedUser;
-
-    await writeFile(this.filePath, JSON.stringify(data, null, 2));
-
-    return updatedUser;
-  }
-
-  static async emailExists(email) {
-    const data = await this.getAll();
-    return data.some((p) => p.email === email);
+    return updatedRowsCount > 0;
   }
 
   static async delete(id) {
-    const data = await this.getAll();
-    const index = data.findIndex((p) => p.id === Number(id));
-
-    if (index === -1) {
-      return false;
-    }
-
-    data.splice(index, 1);
-
-    await writeFile(this.filePath, JSON.stringify(data, null, 2));
-
-    return true;
+    const success = await User.destroy({ where: { id } });
+    return success;
   }
 }

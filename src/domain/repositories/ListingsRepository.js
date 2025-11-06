@@ -1,61 +1,37 @@
-import { readFile, writeFile } from 'fs/promises';
-import { fileURLToPath } from 'url';
-import path from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import Listing from '../models/Listing.js';
 
 export default class ListingsRepository {
-  static filePath = path.join(__dirname, '../../data/dataListings.json');
-
   static async getAll() {
-    const data = await readFile(this.filePath, 'utf-8');
-    return JSON.parse(data);
+    const listings = await Listing.findAll();
+    return listings;
   }
 
   static async getById(id) {
-    const data = await this.getAll();
-    return data.find((p) => p.id === Number(id));
+    const listing = await Listing.findByPk(id);
+    return listing;
   }
 
-  static async create(listing) {
-    const data = await this.getAll();
-    const id = data.length ? data[data.length - 1].id + 1 : 1;
-    const listingWithId = { id, ...listing };
-    data.push(listingWithId);
-    await writeFile(this.filePath, JSON.stringify(data, null, 2));
-    return listingWithId;
+  static async create(listingData) {
+    const listing = await Listing.create(listingData);
+    return listing;
   }
 
   static async update(listing) {
-    const data = await this.getAll();
-
-    const index = data.findIndex((p) => p.id === listing.id);
-
-    if (index === -1) {
-      return false;
+    const fieldsToUpdate = {};
+    for (const [key, value] of Object.entries(listing)) {
+      if (value !== undefined) {
+        fieldsToUpdate[key] = value;
+      }
     }
+    const [updatedRowsCount] = await Listing.update(fieldsToUpdate, {
+      where: { id: listing.id },
+    });
 
-    const updatedListing = { ...data[index], ...listing };
-    data[index] = updatedListing;
-
-    await writeFile(this.filePath, JSON.stringify(data, null, 2));
-
-    return updatedListing;
+    return updatedRowsCount > 0;
   }
 
   static async delete(id) {
-    const data = await this.getAll();
-    const index = data.findIndex((p) => p.id === Number(id));
-
-    if (index === -1) {
-      return false;
-    }
-
-    data.splice(index, 1);
-
-    await writeFile(this.filePath, JSON.stringify(data, null, 2));
-
-    return true;
+    const sucess = await Listing.destroy({ where: { id } });
+    return sucess;
   }
 }

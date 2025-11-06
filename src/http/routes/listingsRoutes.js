@@ -9,13 +9,13 @@ router.get('/:id', ListingsController.getById);
 router.post(
   '/',
   AuthMiddleware,
-  upload.array('images', 10),
+  upload.array('images', 8),
   ListingsController.create,
 );
 router.patch(
   '/:id',
   AuthMiddleware,
-  upload.array('images', 10),
+  upload.array('images', 8),
   ListingsController.update,
 );
 router.delete('/:id', AuthMiddleware, ListingsController.delete);

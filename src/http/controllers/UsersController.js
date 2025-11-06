@@ -21,9 +21,9 @@ export default class UsersController {
       ...req.body,
     };
     const updateUserDTO = new UpdateUserDTO(updateUserData);
-    const data = await UsersService.update(updateUserDTO);
+    await UsersService.update(updateUserDTO);
 
-    return res.status(200).json(data);
+    return res.status(204).send();
   }
 
   static async delete(req, res) {
