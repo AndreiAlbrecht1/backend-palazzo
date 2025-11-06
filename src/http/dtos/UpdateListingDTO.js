@@ -2,6 +2,7 @@ export class UpdateListingDTO {
   constructor({
     id,
     title,
+    type,
     price,
     description,
     city,
@@ -18,6 +19,7 @@ export class UpdateListingDTO {
   }) {
     this.id = id;
     this.title = title ?? undefined;
+    this.type = type ?? undefined;
     this.price = price ?? undefined;
     this.description = description ?? undefined;
     this.city = city ?? undefined;

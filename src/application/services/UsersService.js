@@ -8,7 +8,7 @@ export default class UsersService {
     const users = await UsersRepository.getAll();
 
     if (users.length === 0) {
-      throw new AppError('Users not found.', 404);
+      return [];
     }
 
     return users;
@@ -65,7 +65,6 @@ export default class UsersService {
         throw new AppError('Email already registered.', 400);
       }
     }
-    console.log(validatedUser);
 
     const success = await UsersRepository.update(validatedUser);
 

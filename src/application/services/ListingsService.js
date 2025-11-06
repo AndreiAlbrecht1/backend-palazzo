@@ -7,18 +7,38 @@ import {
 import { S3Service } from './s3Service.js';
 
 export default class ListingsService {
-  static async getAll() {
-    const listings = await ListingsRepository.getAll();
+  static async getAll(filters = {}, page = 1, limit = 6) {
+    const { listings, total, totalPages } = await ListingsRepository.getAll(
+      filters,
+      page,
+      limit,
+    );
 
     if (listings.length === 0) {
-      throw new AppError('Listings not found.', 404);
+      return {
+        data: [],
+        pagination: {
+          currentPage: page,
+          totalPages: 0,
+          totalItems: 0,
+          itemsPerPage: limit,
+        },
+      };
     }
 
     const dataWithUrls = await Promise.all(
       listings.map((listing) => S3Service.processListingImages(listing)),
     );
 
-    return dataWithUrls;
+    return {
+      data: dataWithUrls,
+      pagination: {
+        currentPage: page,
+        totalPages,
+        totalItems: total,
+        itemsPerPage: limit,
+      },
+    };
   }
 
   static async getById(id) {

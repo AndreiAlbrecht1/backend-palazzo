@@ -8,6 +8,11 @@ class Listing extends Model {
           type: DataTypes.STRING,
           allowNull: false,
         },
+        type: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          defaultValue: 'house',
+        },
         price: {
           type: DataTypes.BIGINT,
           allowNull: false,

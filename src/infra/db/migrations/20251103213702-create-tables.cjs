@@ -54,6 +54,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      type: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: 'house',
+      },
       price: {
         type: Sequelize.BIGINT,
         allowNull: false,
