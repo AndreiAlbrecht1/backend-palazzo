@@ -7,9 +7,9 @@ export default class FavoritesController {
     const userId = req.user.id;
     const addFavoriteDTO = new AddFavoriteDTO(req.body);
 
-    const favorite = await FavoritesService.add(userId, addFavoriteDTO);
+    await FavoritesService.add(userId, addFavoriteDTO);
 
-    return res.status(201).json(favorite);
+    return res.status(201).send();
   }
 
   static async remove(req, res) {
